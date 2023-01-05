@@ -1,5 +1,5 @@
 #pragma once
-constexpr uint8_t accum_num = 10;
+constexpr uint8_t accum_num = 5;
 
 // 検出した距離を記録
 volatile typedef struct {

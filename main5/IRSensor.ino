@@ -2,5 +2,5 @@
 #include "Motor.hpp"
 
 void detected_obstacle() {
-  forward(0, 0);
+  forward(50, 50);
 }
