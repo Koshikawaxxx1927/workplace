@@ -70,7 +70,7 @@ void right_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
     case STATE::DANGER : forward(85, 0); break;
-    default : forward(115, 30); break;
+    default : forward(125, 30); break;
   }
 }
 // 左方へ走行
@@ -78,7 +78,7 @@ void left_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
     case STATE::DANGER : forward(20, 130); break;
-    default : forward(50, 160); break;
+    default : forward(50, 170); break;
   }
 }
 
