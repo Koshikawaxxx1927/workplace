@@ -80,36 +80,36 @@ void left_run() {
   }
 }
 
-// 進行方向(前方車の方向)を決定
-void decide_target() {
-  if (centimeter.center < distance::far &&
-      centimeter.right < distance::far &&
-      centimeter.left < distance::far) {
-    target = TARGET::AHEAD;
-  } else if (centimeter.right < distance::far) {
-    target = TARGET::RIGHT;
-  } else if (centimeter.left < distance::far) {
-    target = TARGET::LEFT;
-  } else if (centimeter.center < distance::far) {
-    target = TARGET::AHEAD;
-  }
-}
-
+// // 進行方向(前方車の方向)を決定
 // void decide_target() {
-//   uint16_t min_distance = distance::far;
-//   if (centimeter.center < min_distance) {
+//   if (centimeter.center < distance::far &&
+//       centimeter.right < distance::far &&
+//       centimeter.left < distance::far) {
 //     target = TARGET::AHEAD;
-//     min_distance = centimeter.center;
-//   }
-//   if (centimeter.right < min_distance) {
+//   } else if (centimeter.right < distance::far) {
 //     target = TARGET::RIGHT;
-//     min_distance = centimeter.right;
-//   }
-//   if (centimeter.left < min_distance) {
+//   } else if (centimeter.left < distance::far) {
 //     target = TARGET::LEFT;
-//     min_distance = centimeter.left;
+//   } else if (centimeter.center < distance::far) {
+//     target = TARGET::AHEAD;
 //   }
 // }
+
+void decide_target() {
+  uint16_t min_distance = distance::far;
+  if (centimeter.center < min_distance) {
+    target = TARGET::AHEAD;
+    min_distance = centimeter.center;
+  }
+  if (centimeter.right < min_distance) {
+    target = TARGET::RIGHT;
+    min_distance = centimeter.right;
+  }
+  if (centimeter.left < min_distance) {
+    target = TARGET::LEFT;
+    min_distance = centimeter.left;
+  }
+}
 
 // 前方車までの距離の状態を決定
 void decide_state() {
