@@ -75,8 +75,8 @@ void right_run() {
 void left_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
-    case STATE::DANGER : forward(0, 100); break;
-    default : forward(10, 110); break;
+    case STATE::DANGER : forward(20, 100); break;
+    default : forward(30, 110); break;
   }
 }
 
