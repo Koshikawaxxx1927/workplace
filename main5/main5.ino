@@ -59,24 +59,24 @@ void run() {
 void ahead_run() {
   // constexpr uint8_t right_left_difference = 25;
   switch (state) {
-    case STATE::DANGER : forward(50, 50); break;
-    default : forward(100, 100); break;
+    case STATE::DANGER : forward(70, 70); break;
+    default : forward(120, 120); break;
   }
 }
 // 右方へ走行
 void right_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
-    case STATE::DANGER : forward(70, 0); break;
-    default : forward(80, 10); break;
+    case STATE::DANGER : forward(90, 0); break;
+    default : forward(100, 10); break;
   }
 }
 // 左方へ走行
 void left_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
-    case STATE::DANGER : forward(0, 70); break;
-    default : forward(10, 80); break;
+    case STATE::DANGER : forward(0, 90); break;
+    default : forward(10, 100); break;
   }
 }
 
