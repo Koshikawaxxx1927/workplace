@@ -2,6 +2,8 @@
 #include "UltrasonicSensor.hpp"
 #include "Data.hpp"
 
+// 記念!1周成功
+
 STATE state = STATE::NORMAL; // 前方車までの距離の状態
 TARGET target = TARGET::AHEAD; // 前方車の方向
 // 進行方向(前方車の方向)を決定
