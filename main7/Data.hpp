@@ -1,5 +1,5 @@
 #pragma once
-constexpr uint8_t accum_num = 5;
+constexpr uint8_t accum_num = 1;
 
 // 検出した距離を記録
 volatile typedef struct {
@@ -12,7 +12,7 @@ volatile typedef struct {
 // 呼び出して良いのはget,update,average関数のみ
 typedef struct {
   uint8_t head=0, tail=0;
-  uint16_t Q[accum_num];
+  uint16_t Q[accum_num] = {0};
   // ゲッター
   uint16_t get(const uint8_t idx) const { return Q[idx]; }
   // データをアップデート

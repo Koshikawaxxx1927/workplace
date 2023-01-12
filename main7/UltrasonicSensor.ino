@@ -2,26 +2,25 @@
 
 void update_centimeter() {
   // accum_num回分超音波センサの値を更新する
-  for (int i = 0; i < accum_num; ++i) {
-    // triger_pinがLOWになっているように確認
-    __ultrasonic_sensor::triger_low(pin::left_sensor.triger);
-    __ultrasonic_sensor::triger_low(pin::center_sensor.triger);
-    __ultrasonic_sensor::triger_low(pin::right_sensor.triger);
-    delayMicroseconds(4);
+  // triger_pinがLOWになっているように確認
+  __ultrasonic_sensor::triger_low(pin::left_sensor.triger);
+  __ultrasonic_sensor::triger_low(pin::center_sensor.triger);
+  __ultrasonic_sensor::triger_low(pin::right_sensor.triger);
+  delayMicroseconds(4);
 
-    // HIGHのパルス波を受け取っている時間を計算
-    left_sensor.update(constrain(pulse_out_calc_duration(pin::left_sensor.triger, pin::left_sensor.echo), 0, distance::far));
-    // 60msの間隔を空けることを推奨
-    delayMicroseconds(600);
-    // HIGHのパルス波を受け取っている時間を計算
-    center_sensor.update(constrain(pulse_out_calc_duration(pin::center_sensor.triger, pin::center_sensor.echo), 0, distance::far));
-    // 60msの間隔を空けることを推奨
-    delayMicroseconds(600);
-    // HIGHのパルス波を受け取っている時間を計算
-    right_sensor.update(constrain(pulse_out_calc_duration(pin::right_sensor.triger, pin::right_sensor.echo), 0, distance::far));
-    // 60msの間隔を空けることを推奨
-    delayMicroseconds(600);
-  }
+  // HIGHのパルス波を受け取っている時間を計算
+  left_sensor.update(constrain(pulse_out_calc_duration(pin::left_sensor.triger, pin::left_sensor.echo), 0, distance::far));
+  // 60msの間隔を空けることを推奨
+  delayMicroseconds(60000);
+  // HIGHのパルス波を受け取っている時間を計算
+  center_sensor.update(constrain(pulse_out_calc_duration(pin::center_sensor.triger, pin::center_sensor.echo), 0, distance::far));
+  // 60msの間隔を空けることを推奨
+  delayMicroseconds(60000);
+  // HIGHのパルス波を受け取っている時間を計算
+  right_sensor.update(constrain(pulse_out_calc_duration(pin::right_sensor.triger, pin::right_sensor.echo), 0, distance::far));
+  // 60msの間隔を空けることを推奨
+  delayMicroseconds(60000);
+
   centimeter.left = left_sensor.average();
   centimeter.center = center_sensor.average();
   centimeter.right = right_sensor.average();

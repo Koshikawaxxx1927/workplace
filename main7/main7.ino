@@ -2,6 +2,8 @@
 #include "UltrasonicSensor.hpp"
 #include "Data.hpp"
 
+// 記念!1周成功
+
 STATE state = STATE::NORMAL; // 前方車までの距離の状態
 TARGET target = TARGET::AHEAD; // 前方車の方向
 // 進行方向(前方車の方向)を決定
@@ -59,57 +61,57 @@ void run() {
 void ahead_run() {
   // constexpr uint8_t right_left_difference = 25;
   switch (state) {
-    case STATE::DANGER : forward(60, 60); break;
-    default : forward(100, 100); break;
+    case STATE::DANGER : forward(50, 50); break;
+    default : forward(115, 115); break;
   }
 }
 // 右方へ走行
 void right_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
-    case STATE::DANGER : forward(75, 0); break;
-    default : forward(85, 10); break;
+    case STATE::DANGER : forward(85, 0); break;
+    default : forward(125, 30); break;
   }
 }
 // 左方へ走行
 void left_run() {
   // constexpr uint8_t right_left_difference = 50;
   switch (state) {
-    case STATE::DANGER : forward(20, 100); break;
-    default : forward(30, 110); break;
+    case STATE::DANGER : forward(20, 130); break;
+    default : forward(50, 170); break;
   }
 }
 
-// 進行方向(前方車の方向)を決定
-void decide_target() {
-  if (centimeter.center < distance::far &&
-      centimeter.right < distance::far &&
-      centimeter.left < distance::far) {
-    target = TARGET::AHEAD;
-  } else if (centimeter.right < distance::far) {
-    target = TARGET::RIGHT;
-  } else if (centimeter.left < distance::far) {
-    target = TARGET::LEFT;
-  } else if (centimeter.center < distance::far) {
-    target = TARGET::AHEAD;
-  }
-}
-
+// // 進行方向(前方車の方向)を決定
 // void decide_target() {
-//   uint16_t min_distance = distance::far;
-//   if (centimeter.center < min_distance) {
+//   if (centimeter.center < distance::far &&
+//       centimeter.right < distance::far &&
+//       centimeter.left < distance::far) {
 //     target = TARGET::AHEAD;
-//     min_distance = centimeter.center;
-//   }
-//   if (centimeter.right < min_distance) {
+//   } else if (centimeter.right < distance::far) {
 //     target = TARGET::RIGHT;
-//     min_distance = centimeter.right;
-//   }
-//   if (centimeter.left < min_distance) {
+//   } else if (centimeter.left < distance::far) {
 //     target = TARGET::LEFT;
-//     min_distance = centimeter.left;
+//   } else if (centimeter.center < distance::far) {
+//     target = TARGET::AHEAD;
 //   }
 // }
+
+void decide_target() {
+  uint16_t min_distance = distance::far;
+  if (centimeter.center < min_distance) {
+    target = TARGET::AHEAD;
+    min_distance = centimeter.center;
+  }
+  if (centimeter.right < min_distance) {
+    target = TARGET::RIGHT;
+    min_distance = centimeter.right;
+  }
+  if (centimeter.left < min_distance) {
+    target = TARGET::LEFT;
+    min_distance = centimeter.left;
+  }
+}
 
 // 前方車までの距離の状態を決定
 void decide_state() {
